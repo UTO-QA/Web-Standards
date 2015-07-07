@@ -1,0 +1,7 @@
+browsers:
+  firefox:
+    browserName: firefox
+gridUrl: http://localhost:4444/wd/hub
+rootUrl: https://graduate.asu.edu/
+tolerance: 30
+windowSize: 1024x768
