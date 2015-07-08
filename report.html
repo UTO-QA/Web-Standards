@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+		<title>Test Results</title>
+		<meta name="description" content="{{ description }}" />
+	</head>
+	<body>
+			<div class="page-header">
+				<img src="logoResize.jpg">
+			</div>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+						<h1 class="panel-title" align="center"><b>Test Report</b>
+						<br>
+						{{ websiteName }}
+						</h1>
+				</div>
+			</div>
+			<!--
+			<div class="panel panel-default">
+				<h3 class="panel-heading">
+					Website
+				</h3>
+				<div class="panel-body">
+					<h4>{{ websiteName }}</h4>
+				</div>
+			</div>
+			-->
+		<div class="panel-group" id="accordion">
+			<div class="panel panel-info">
+      			<div class="panel-heading">
+        			<h4 class="panel-title">
+            			<a data-toggle="collapse" data-parent="#accordion" 
+               			href="#collapseOne">
+			               <span class="label label-info"><strong>Test Status: Click to expand</strong></span>
+			            </a>
+         			</h4>
+      			</div>
+      			<div id="collapseOne" class="panel-collapse collapse in">
+         			<div class="panel-body">
+			            <b><small>{{ testStatus }}</small></b>
+         			</div>
+      			</div>
+   			</div>
+   			<div class="panel panel-warning">
+      			<div class="panel-heading">
+         			<h4 class="panel-title">
+            			<a data-toggle="collapse" data-parent="#accordion" 
+               			href="#collapseTwo">
+               			   <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+			               <span class="label label-danger"><strong>Failures<strong></span>
+            			</a>
+         			</h4>
+      			</div>
+      			<div id="collapseTwo" class="panel-collapse collapse">
+         			<div class="panel-body">
+         				<ul>
+         				{% for item in failures -%}
+			            	<li><small>{{ item }}</small></li>
+         				{%- endfor %}
+         				</ul>
+         			</div>
+      			</div>
+  			</div>
+		</div>
+	</body>
+</html>
