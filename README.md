@@ -29,15 +29,15 @@ ___________________________________
 1. Create an empty folder and install all the libraries as mentioned above from      this folder.
 2. Fire up the command prompt and navigate to your project folder. 
 3. In another tab of the command prompt type in 
-	####"phantomjs --webdriver=4444"
+	####phantomjs --webdriver=4444
 	This starts the webdriver on port 4444
 4. Run the python script using the following command: 
-	####"python magicScript.py"
+	####python magicScript.py
 5. Allow the script to finish running. Your project folder will now have folders for all the websites that have been tested with the html reports for each of the websites inside the corresponding folder.
 6.  Close the window running webdriver. 
 7.  From the project folder in the command prompt type in the following commands:
-	####"hardy selenium start"
-	####"python searchForString.py"
+	####hardy selenium start
+	####python searchForString.py
 8. Allow the script to run. Once the script has run the website folders will have an HTML report with the errors found in the layout of the headers and footers. 
 9. Close the command prompt running selenium. 
 
