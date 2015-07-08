@@ -8,7 +8,7 @@ Feature:  Website layout test
 
 	Scenario:	Logo Offset
 				Given I visit "https://uto.asu.edu/"
-				Then "asuLogo" should have offset "top" of "13"
+				Then "asuLogo" should have offset "top" of "12"
 
 	Scenario:	Logo Height
 				Given I visit "https://uto.asu.edu/"
@@ -16,7 +16,7 @@ Feature:  Website layout test
 
 	Scenario:	Logo Width
 				Given I visit "https://uto.asu.edu/"
-				Then "asuLogo" should have "width" of "205px"
+				Then "asuLogo" should have "width" of "203px"
 
 	Scenario:   Department Name
 				Given I visit "https://uto.asu.edu/"

@@ -2,6 +2,7 @@
 
 import jinja2
 import os
+import subprocess
 from selenium import webdriver
 from selenium.webdriver.common import keys, action_chains
 from selenium.webdriver.common.by import By
@@ -214,18 +215,28 @@ def renderToTemplate():
 	outputText = template.render(websiteName = getWebsiteName() , testStatus = getTestResults(), failures = getFailures())
 	print outputText
 	siteName = getWebsiteName()
-	fileName = siteName+".html"
+	fileName = siteName+"testReport"+".html"
 	with open(fileName,"wb") as f:
 		f.write(outputText)
 		f.close()
+	if os.path.exists(currentDirectory+"\\"+siteName):
+		print "path found"
+		destination = currentDirectory+"\\"+siteName
+		print destination
+		print fileName
+		command = subprocess.Popen("move"+ " " +currentDirectory+"\\"+fileName+" "+destination,shell=True)
+		command.wait()
+	else:
+		print "path not found"
+		os.makedirs(currentDirectory+"\\"+siteName)
+		destination = currentDirectory+"\\"+siteName
+		print destination
+		print fileName
+		command = subprocess.Popen("move"+ " " +currentDirectory+"\\"+fileName+" "+destination,shell=True)
+		command.wait()
 
 def main():
 	renderToTemplate()
-	# result = checkLogo()
-	# print result
-	# checkNavigationBar()
-	result = checkFooter()
-	print result
 	driver.close()
 
 
