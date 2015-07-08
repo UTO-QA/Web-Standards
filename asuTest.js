@@ -3,8 +3,8 @@ var gemini = require('gemini');
 gemini.suite('asu-header', function(suite) {
     suite
     	.before(function(actions, find) {
-        actions.sendKeys(find('#username'),'psshastr');
-        actions.sendKeys(find('#password'),'Fortconvent20593!');
+        actions.sendKeys(find('#username'),'**enter ASURITE ID here**');
+        actions.sendKeys(find('#password'),'**enter ASURITE password here**');
         actions.click(find('#login_submit > input'))
         	   .wait(2000);
     	})
