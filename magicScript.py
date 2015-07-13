@@ -11,10 +11,14 @@ import codecs
 from bs4 import BeautifulSoup
 import xlwt
 import requests
-
+from selenium import webdriver
+from time import sleep
 
 # Get current directory
 currentDirectory = os.getcwd()
+schoolsDirectory = "resultsFolder"
+if not os.path.exists(currentDirectory+"\\"+schoolsDirectory):
+    os.makedirs(currentDirectory+"\\"+schoolsDirectory)
 # Open existing workbook for reading data
 workbook = xlrd.open_workbook('convertedSites.xlsx')
 # Open a new workbook to write test results
@@ -76,20 +80,20 @@ while curr_row < num_rows:
         print "Creating HTML Report"
         execTest = subprocess.Popen("gemini test --reporter html sosTest.js",shell=True,stdout=subprocess.PIPE)
         execTest.wait()
-        if not os.path.exists(currentDirectory+"\\"+splitString[2]):
-            os.makedirs(currentDirectory+"\\"+splitString[2])
+        if not os.path.exists(currentDirectory+"\\"+schoolsDirectory+"\\"+splitString[2]):
+            os.makedirs(currentDirectory+"\\"+schoolsDirectory+"\\"+splitString[2])
             os.rename(currentDirectory+'\\gemini-report\\index.html',currentDirectory+'\\gemini-report\\'+fileName)
             listOfFiles = os.listdir(currentDirectory+'\\gemini-report')
             # Move files from gemini-report to school directory
             for f in listOfFiles:
-                destination = currentDirectory+"\\"+splitString[2]
+                destination = currentDirectory+"\\"+schoolsDirectory+"\\"+splitString[2]
                 fullPath = currentDirectory+'\\gemini-report\\'+f
                 command = subprocess.Popen("move" + " " + fullPath + " " + destination, shell=True)
                 command.wait()
         # Get Total, Failed, Passed and Skipped tests from HTML Document
-        if os.path.exists(currentDirectory+"\\"+splitString[2]):
+        if os.path.exists(currentDirectory+"\\"+schoolsDirectory+"\\"+splitString[2]):
             currentPath = splitString[2]+"\\"+splitString[2]+".html"
-            page = codecs.open(currentDirectory+"\\"+currentPath, 'r')
+            page = codecs.open(currentDirectory+"\\"+schoolsDirectory+"\\"+currentPath, 'r')
             document = page.read()
             soup = BeautifulSoup(document)
             for allTests in soup.findAll('dt'):
@@ -100,6 +104,7 @@ while curr_row < num_rows:
                 # Write test Results to Excel Sheet
                 print "Writing to Row:"+str(curr_row)+" Cell: "+str(current_cell)
 workbookWrite.save('TestResults.xls')
+
 
 '''
 Format of Result
