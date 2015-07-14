@@ -20,7 +20,7 @@ schoolsDirectory = "resultsFolder"
 if not os.path.exists(currentDirectory+"\\"+schoolsDirectory):
     os.makedirs(currentDirectory+"\\"+schoolsDirectory)
 # Open existing workbook for reading data
-workbook = xlrd.open_workbook('convertedSites.xlsx')
+workbook = xlrd.open_workbook('**Enter path to excel sheet**')
 # Open a new workbook to write test results
 workbookWrite = xlwt.Workbook()
 worksheetWrite = workbookWrite.add_sheet('results')

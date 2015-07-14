@@ -37,7 +37,7 @@ website = ""
 # Get current directory
 currentDirectory = os.getcwd()
 # Open existing workbook for reading data
-workbook = xlrd.open_workbook('oneSite.xlsx')
+workbook = xlrd.open_workbook('***Enter path to excel sheet here***')
 # Open Sheet1 from workbook
 worksheet = workbook.sheet_by_name('Sheet1')
 # Get number of rows in the Excel sheet
