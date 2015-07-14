@@ -12,6 +12,9 @@ import time
 
 # Global Variables Declaration
 currentDirectory = os.getcwd()
+schoolsDirectory = "resultsFolder"
+if not os.path.exists(currentDirectory+"\\"+schoolsDirectory):
+    os.makedirs(currentDirectory+"\\"+schoolsDirectory)
 driver = webdriver.Firefox()
 correctRedirection = ""
 correctLink = ""
@@ -24,7 +27,7 @@ collegesLink = "https://www.asu.edu/colleges/"
 mapLink = "https://www.asu.edu/map/"
 directoryLink = "https://www.asu.edu/contactasu/"
 # Expected Links for global footer
-copyrightAndTrademark = "http://www.asu.edu/copyright)"
+copyrightAndTrademark = "http://www.asu.edu/copyright/"
 accessibility = "http://www.asu.edu/accessibility/"
 privacy = "http://www.asu.edu/privacy/"
 jobsAtASU = "http://www.asu.edu/asujobs/"
@@ -219,17 +222,17 @@ def renderToTemplate():
 	with open(fileName,"wb") as f:
 		f.write(outputText)
 		f.close()
-	if os.path.exists(currentDirectory+"\\"+siteName):
+	if os.path.exists(currentDirectory+"\\"+schoolsDirectory+"\\"+siteName):
 		print "path found"
-		destination = currentDirectory+"\\"+siteName
+		destination = currentDirectory+"\\"+schoolsDirectory+"\\"+siteName
 		print destination
 		print fileName
 		command = subprocess.Popen("move"+ " " +currentDirectory+"\\"+fileName+" "+destination,shell=True)
 		command.wait()
 	else:
 		print "path not found"
-		os.makedirs(currentDirectory+"\\"+siteName)
-		destination = currentDirectory+"\\"+siteName
+		os.makedirs(currentDirectory+"\\"+schoolsDirectory+"\\"+siteName)
+		destination = currentDirectory+"\\"+schoolsDirectory+"\\"+siteName
 		print destination
 		print fileName
 		command = subprocess.Popen("move"+ " " +currentDirectory+"\\"+fileName+" "+destination,shell=True)

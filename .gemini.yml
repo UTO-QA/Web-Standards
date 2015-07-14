@@ -2,6 +2,6 @@ browsers:
   firefox:
     browserName: firefox
 gridUrl: http://localhost:4444/wd/hub
-rootUrl: https://graduate.asu.edu/
+rootUrl: *enter root url to generate baseline images*
 tolerance: 30
 windowSize: 1024x768
