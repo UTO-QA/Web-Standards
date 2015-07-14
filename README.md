@@ -23,6 +23,18 @@ ___________________________________
 
 	npm install -g phantomjs@1.9.8
 	
+###Initial Setup
+
++ Gemini
+	
+	Change the 'rootUrl' in .gemini.yml to the website for your baseline tests.
+	
+	Under 'magicScript.py' replace **Enter path to excel sheet** with the excel sheet that has all the websites you want to test. A sample excel sheet has been provided.
+	
++ Hardy
+
+	Under resultScript.py replace **Enter path to excel sheet here** with the excel sheet that has all the websites you want to test. 
+	
 ### How to Run the Script
 *************
 
@@ -43,7 +55,7 @@ ___________________________________
 	
 	<b>hardy selenium start</b>
 	
-	<b>python searchForString.py</b>
+	<b>python resultScript.py</b>
 8. Allow the script to run. Once the script has run the website folders will have an HTML report with the errors found in the layout of the headers and footers. 
 9. Close the command prompt running selenium. 
 
